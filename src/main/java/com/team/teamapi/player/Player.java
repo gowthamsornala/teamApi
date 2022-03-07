@@ -13,10 +13,6 @@ import com.team.teamapi.team.Team;
 
 @Entity
 public class Player {
-
-     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-     @JsonIgnore
-     private Team team;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +20,10 @@ public class Player {
     private String playerName;
     private String playerRole;
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Team team;
+    
     public Player(){}
 
 	public Player(String name, String role, Team team){

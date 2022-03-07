@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class PlayerController {
     
     @Autowired
-    private PlayerModel playerModel;   
+    private PlayerModel playerModel;
     
     @GetMapping("/players")
     public List<Player> getPlayers(){
         return playerModel.getPlayers();
     }
 
+//    @GetMapping("/teams/{teamId}/players")
+//    public List<Player> getPlayersByTeam(@PathVariable int teamId){
+//    	return playerModel.getPlayersByTeam(teamId);
+//    	}
+    
     @GetMapping("teams/{teamId}/players/{playerId}")
     public Player getPlayer(@PathVariable int teamId, @PathVariable int playerId){
         return playerModel.getPlayer(teamId, playerId);
